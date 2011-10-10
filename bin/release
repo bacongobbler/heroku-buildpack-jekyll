@@ -3,9 +3,9 @@
 cat << EOF
 ---
 addons:
-  - shared-database:5mb
 config_vars:
-  PATH: bin:/usr/bin:/bin
+  GEM_HOME:  ./gems
+  PATH: gems/bin:bin:/usr/bin:/bin
 default_process_types:
-  hello: cat hello.txt
+  web: jekyll --server $PORT
 EOF

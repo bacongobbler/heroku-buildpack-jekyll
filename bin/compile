@@ -4,17 +4,27 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Found a hello.txt"
-echo "BUILD_DIR: " $1 | indent
-echo "CACHE_DIR: " $2 | indent
+echo "-----> Compiling Jekyll site"
 
-# if hello.txt has contents, display them (indented to align)
-# otherwise error
+# Install Jekyll
 
-if [ ! -s $1/hello.txt ]; then
-  echo "hello.txt was empty" | indent
-  exit 1
-else
-  echo "hello.txt is not empty, here are the contents" | indent
-  cat $1/hello.txt | indent
+cat << EOF > ~/.gemrc
+gemhome: $HOME/gems
+gempath:
+- $HOME/gems
+- /usr/lib/ruby/gems/1.8
+EOF
+
+/usr/local/bin/gem install jekyll RedCloth --no-rdoc --no-ri
+
+# Add some excludes
+if [ ! -s $1/_config.yml ]; then
+	echo "Adding excludes to _config.yml" | indent
+  echo "exclude:  [ Gemfile, Gemfile.lock, Procfile, vendor, gems]" > _config.yml
 fi
+
+# Run Jekyll
+echo "Running Jekyll" | indent
+export GEM_HOME=$HOME/gems
+export PATH=gems/bin:$PATH
+gems/bin/jekyll
