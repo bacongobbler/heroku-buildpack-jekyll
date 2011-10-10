@@ -14,7 +14,7 @@ gempath:
 - $1/gems
 EOF
 
-/usr/local/bin/gem install jekyll RedCloth --no-rdoc --no-ri
+/usr/local/bin/gem install jekyll RedCloth --no-rdoc --no-ri | indent
 
 # Add some excludes
 if [ ! -s $1/_config.yml ]; then
@@ -26,8 +26,8 @@ fi
 echo "Running Jekyll" | indent
 export GEM_HOME=$1/gems
 export PATH=$1/gems/bin:$PATH
-$1/gems/bin/jekyll
-
+cd $1
+$1/gems/bin/jekyll | indent
 
 # Cleanup
 # rm ~/.gemrc
