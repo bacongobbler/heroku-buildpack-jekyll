@@ -19,7 +19,7 @@ EOF
 # Add some excludes
 #if [ ! -s $1/_config.yml ]; then
 #	echo "Adding excludes to _config.yml" | indent
-#  echo "exclude:  [ gems ]" > $1/_config.yml
+#  echo "exclude:  [ .gems ]" > $1/_config.yml
 #fi
 
 # Run Jekyll
@@ -27,4 +27,4 @@ echo "Running Jekyll" | indent
 export GEM_HOME=$1/.gems
 export PATH=$1/.gems/bin:$PATH
 cd $1
-$1/gems/bin/jekyll | indent
+$1/.gems/bin/jekyll | indent
