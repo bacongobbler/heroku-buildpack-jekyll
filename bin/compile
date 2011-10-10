@@ -25,6 +25,6 @@ fi
 
 # Run Jekyll
 echo "Running Jekyll" | indent
-export GEM_HOME=$HOME/gems
+export GEM_HOME=$1/gems
 export PATH=gems/bin:$PATH
-gems/bin/jekyll
+$1/gems/bin/jekyll
