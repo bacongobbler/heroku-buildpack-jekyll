@@ -4,8 +4,6 @@ cat << EOF
 ---
 addons:
 config_vars:
-  GEM_HOME:  ./gems
-  PATH: .gems/bin:bin:/usr/bin:/bin
 default_process_types:
-  web: jekyll --server \$PORT
+  web: env GEM_HOME=./.gems ./.gems/bin/jekyll --server \$PORT
 EOF
