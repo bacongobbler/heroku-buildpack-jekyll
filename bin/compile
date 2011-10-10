@@ -9,10 +9,9 @@ echo "-----> Compiling Jekyll site"
 # Install Jekyll
 
 cat << EOF > ~/.gemrc
-gemhome: $HOME/gems
+gemhome: $1/gems
 gempath:
-- $HOME/gems
-- /usr/lib/ruby/gems/1.8
+- $1/gems
 EOF
 
 /usr/local/bin/gem install jekyll RedCloth --no-rdoc --no-ri
@@ -26,5 +25,9 @@ fi
 # Run Jekyll
 echo "Running Jekyll" | indent
 export GEM_HOME=$1/gems
-export PATH=gems/bin:$PATH
+export PATH=$1/gems/bin:$PATH
 $1/gems/bin/jekyll
+
+
+# Cleanup
+# rm ~/.gemrc
