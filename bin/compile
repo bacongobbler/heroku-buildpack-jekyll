@@ -5,6 +5,8 @@ indent() {
 }
 
 echo "-----> Found a hello.txt"
+echo "BUILD_DIR: " $1 | indent
+echo "CACHE_DIR: " $2 | indent
 
 # if hello.txt has contents, display them (indented to align)
 # otherwise error
