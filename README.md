@@ -12,10 +12,12 @@ This variant is designed to work on Stackato:
 Specify this language pack repo in a `BUILDPACK_URL` environment
 variable in a top-level `stackato.yml` file. For example: 
 
-  name: yoursite 
-  mem: 128M
-  framework: buildpack
-  env:
-    BUILDPACK_URL: git://github.com/troytop/stackato-buildpack-jekyll.git 
+
+    name: yoursite 
+    mem: 128M
+    framework: buildpack
+    env:
+      BUILDPACK_URL: git://github.com/troytop/stackato-buildpack-jekyll.git 
+
 
 Push the application to the target with `stackato push -n`. 
