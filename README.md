@@ -3,12 +3,19 @@
 The Jekyll Build Pack will look for a file named `_config.yml` in the app root and
 run Jekyll to create and serve the site.
 
+This variant is designed to work on Stackato:
+
+ http://www.activestate.com/stackato
+
 ## Usage
 
-Add this language pack to your `BUILDPACK_URL`.
+Specify this language pack repo in a `BUILDPACK_URL` environment
+variable in a top-level `stackato.yml` file. For example: 
 
-    heroku config:add BUILDPACK_URL="http://github.com/markpundsack/heroku-buildpack-jekyll.git"
-    
-Or, with a recent version of the heroku gem, set it at creation time:
+  name: yoursite 
+  mem: 128M
+  framework: buildpack
+  env:
+    BUILDPACK_URL: git://github.com/troytop/stackato-buildpack-jekyll.git 
 
-    heroku create --stack cedar --buildpack http://github.com/markpundsack/heroku-buildpack-jekyll.git
+Push the application to the target with `stackato push -n`. 
