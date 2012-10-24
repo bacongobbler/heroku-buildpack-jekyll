@@ -21,4 +21,4 @@ echo "Running Jekyll" | indent
 export GEM_HOME=$1/.gems
 export PATH=$1/.gems/bin:$PATH
 cd $1
-$1/.gems/bin/jekyll | indent
+$1/.gems/bin/jekyll --no-auto --no-server --no-lsi --safe | indent
