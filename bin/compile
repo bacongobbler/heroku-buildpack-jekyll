@@ -16,10 +16,10 @@ gempath:
 EOF
 
 message "Installing jekyll version 0.11.2"
-/usr/local/bin/gem install jekyll -v 0.11.2 --no-rdoc --no-ri | indent
+gem install jekyll -v 0.11.2 --no-rdoc --no-ri | indent
 
 message "Installing Liquid version 2.2.2"
-/usr/local/bin/gem install liquid -v 2.2.2 --no-rdoc --no-ri | indent
+gem install liquid -v 2.2.2 --no-rdoc --no-ri | indent
 
 # Run Jekyll
 message "Setting environment variables"
