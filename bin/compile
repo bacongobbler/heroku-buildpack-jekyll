@@ -1,5 +1,7 @@
 #!/bin/sh
 
+BUILD_ROOT=$1
+
 indent() {
   sed -u 's/^/       /'
 }
@@ -8,11 +10,11 @@ message() {
   echo "-----> $*"
 }
 
-# Install Jekyll into APP_ROOT/.gems
+# Install Jekyll into BUILD_ROOT/.gems
 cat << EOF > ~/.gemrc
-gemhome: $1/.gems
+gemhome: $BUILD_ROOT/.gems
 gempath:
-- $1/.gems
+- $BUILD_ROOT/.gems
 EOF
 
 message "Installing jekyll version 0.11.2"
@@ -26,9 +28,9 @@ gem install redcarpet -v 3.0.0 --no-rdoc --no-ri | indent
 
 # Run Jekyll
 message "Setting environment variables"
-export GEM_HOME=$1/.gems
-export PATH=$1/.gems/bin:$PATH
+export GEM_HOME=$BUILD_ROOT/.gems
+export PATH=$BUILD_ROOT/.gems/bin:$PATH
 export LC_ALL=en_US.UTF8
-cd $1
+
 message "Compiling Jekyll site"
-$1/.gems/bin/jekyll --no-auto --no-server --no-lsi --safe | indent
+$BUILD_ROOT/.gems/bin/jekyll --no-auto --no-server --no-lsi --safe | indent
