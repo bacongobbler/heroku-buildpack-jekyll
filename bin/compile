@@ -21,6 +21,9 @@ gem install jekyll -v 0.11.2 --no-rdoc --no-ri | indent
 message "Installing Liquid version 2.2.2"
 gem install liquid -v 2.2.2 --no-rdoc --no-ri | indent
 
+message "Installing redcarpet version 3.0.0"
+gem install redcarpet -v 3.0.0 --no-rdoc --no-ri | indent
+
 # Run Jekyll
 message "Setting environment variables"
 export GEM_HOME=$1/.gems
