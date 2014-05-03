@@ -1,8 +1,4 @@
 #!/bin/sh
 
 cat << EOF
----
-addons:
-default_process_types:
-  web: env GEM_HOME=./.gems ./.gems/bin/jekyll serve --port \$PORT
 EOF

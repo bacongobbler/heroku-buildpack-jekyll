@@ -37,6 +37,13 @@ then
     bundle install
 fi
 
+# inject a Procfile if none is present
+if [ ! -f Procfile ]
+then
+    message "no Procfile found, providing default"
+    echo "web: env GEM_HOME=./.gems ./.gems/bin/jekyll serve --port \$PORT" > Procfile
+fi
+
 # Run Jekyll
 message "Compiling Jekyll site"
 jekyll build | indent
